@@ -1,13 +1,3 @@
----
-title: "Description of Sonia's project"
-author: "Sonia Ionescu"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ## Photo digitization
 ##### File name:
 digitizeLandmarks.R
