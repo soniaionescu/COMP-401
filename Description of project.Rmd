@@ -1,3 +1,4 @@
+# Creation of R package
 ## Photo digitization
 ##### File name:
 digitizeLandmarks.R
@@ -116,3 +117,9 @@ Add Voronoi polygons to the morphospace, to represent avaiable niche space for e
 
 ##### References
 
+# Creation of Shiny App
+
+## Receiving input 
+
+##### References:
+https://shiny.rstudio.com/articles/plot-interaction.html
