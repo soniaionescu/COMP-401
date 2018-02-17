@@ -23,11 +23,9 @@ Plots a jpeg in the "plot" window in R Studio.
 ###### digitize_landmark
 Takes the output of plot_jpeg and uses the locator function to have the user plot 39 points on the fish. Then has the user choose two points an inch apart, and uses this to scale the measurements from pixels to inches. Then, runs normalize_coordinates on these coordinates. Then, writes these coordinates into a csv.
 
-###### normalize_coordinates
-In order to make later comparisons easier, normalizes coordinates to have an origin with the x axis running from the mouth to the fork of the caudal fin.
-
 ##### References
 Morphometrics with R, by Julien Claude (2008).
+https://cran.r-project.org/web/packages/geomorph/geomorph.pdf
 
 ## Accounting for all variability
 ##### File Name:
@@ -46,6 +44,10 @@ The minimum number of fish required to create a proper consensus.
 
 ###### Packages required before running this:
 geomorph
+
+###### normalize_coordinates
+Puts x and y coordinates of fish in such a way as to be able to perform general procrustes analysis
+Maybe using gpagen?
 
 ###### create_average:
 Creates an "average" fish of the species.
@@ -73,6 +75,9 @@ An excel file with all of the members of a community (the Olifants, the Breed, o
 
 ###### Packages required before running this:
 Alphahull
+
+###### normalize_coordinates
+normalize_coordinates now needs to be run across a community, rather than across a species.
 
 ###### community_average
 Generate a consensus morphology that averages the position of each landmark across all species and plot them to create an average shape of all individuals
