@@ -1,0 +1,123 @@
+---
+title: "Description of Sonia's project"
+author: "Sonia Ionescu"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Photo digitization
+##### File name:
+digitizeLandmarks.R
+
+##### Purpose:
+To go from photos of fish to an excel sheet with coordinates of landmarks, which can then be used for future steps in analysis.
+
+##### Input:
+An excel sheet of file names of photos. This should be in the same folder as the photos themselves, which should be set to the working directory, using setwd(), or, if working in R Studio (recommended), Session > Set Working Directory > Choose directory.
+
+##### Output:
+An excel file with x and y coordinates of all 39 landmarks on the fish, labeled. This is saved over each time the function is run, so copy and paste the output into another file/safe space before running it again.
+
+##### Functions:
+
+###### Packages required before running this:
+jpeg
+dplyr
+
+###### plot_jpeg:
+Plots a jpeg in the "plot" window in R Studio.
+
+###### digitize_landmark
+Takes the output of plot_jpeg and uses the locator function to have the user plot 39 points on the fish. Then has the user choose two points an inch apart, and uses this to scale the measurements from pixels to inches. Then, runs normalize_coordinates on these coordinates. Then, writes these coordinates into a csv.
+
+###### normalize_coordinates
+In order to make later comparisons easier, normalizes coordinates to have an origin with the x axis running from the mouth to the fork of the caudal fin.
+
+##### References
+Morphometrics with R, by Julien Claude (2008).
+
+## Accounting for all variability
+##### File Name:
+variability.R
+
+##### Purpose:
+To determine the minimum number of individuals necessary to create a proper consensus for all of the morphological variation present in the species.
+
+##### Input:
+An excel sheet containing all of the coordinates created using digitize_landmark for a specific species.
+
+##### Output:
+The minimum number of fish required to create a proper consensus.
+
+##### Functions:
+
+###### Packages required before running this:
+geomorph
+
+###### create_average:
+Creates an "average" fish of the species.
+
+###### ANOVAfish:
+Runs ANOVA in order to find the smallest number of fish needed to create a consensus morphology
+
+##### References
+
+## Creating a convex hull
+
+##### File Name:
+convex_hull.R
+
+##### Purpose:
+Create a relative warp analysis/principle component analysis for a specific community.
+
+##### Input:
+An excel file with all of the members of a community (the Olifants, the Breed, or the Orange river). 
+
+##### Output:
+
+
+##### Functions:
+
+###### Packages required before running this:
+Alphahull
+
+###### community_average
+Generate a consensus morphology that averages the position of each landmark across all species and plot them to create an average shape of all individuals
+
+###### relative_warp
+Compare the position of each landmark of a species to the same landmark of the community average. 
+
+###### kmeanscluster
+Group species based on k-means cluster analysis; this will group species within the morphospace with similar principle components together, allowing us to learn whether the invader is similar to the native species.
+
+##### References
+
+## Morphospace analysis
+
+##### File Name:
+morphospace_analysis.R
+
+##### Purpose:
+To analyse the density of a morphospace.
+
+##### Input:
+A morphospace
+
+##### Output:
+A morphospace which has been analyzed for density, and which has had Voronoi polygons added.
+
+##### Functions:
+
+###### Packages required before running this:
+
+###### 2Dkerneldensity
+Apply 2D kernel density onto a morphospace to reflect the density of the space.
+
+###### voronoiPolygon
+Add Voronoi polygons to the morphospace, to represent avaiable niche space for every species within the community.
+
+##### References
+
