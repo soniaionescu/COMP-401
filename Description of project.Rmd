@@ -28,35 +28,6 @@ Takes the output of plot_jpeg and uses the locator function to have the user plo
 Morphometrics with R, by Julien Claude (2008).
 https://cran.r-project.org/web/packages/geomorph/geomorph.pdf
 
-## Accounting for all variability
-##### File Name:
-variability.R
-
-##### Purpose:
-To determine the minimum number of individuals necessary to create a proper consensus for all of the morphological variation present in the species.
-
-##### Input:
-An excel sheet containing all of the coordinates created using digitize_landmark for a specific species.
-
-##### Output:
-The minimum number of fish required to create a proper consensus.
-
-##### Functions:
-
-###### Packages required before running this:
-geomorph
-
-###### normalize_coordinates
-Puts x and y coordinates of fish in such a way as to be able to perform general procrustes analysis
-Maybe using gpagen?
-
-###### create_average:
-Creates an "average" fish of the species.
-
-###### ANOVAfish:
-Runs ANOVA in order to find the smallest number of fish needed to create a consensus morphology
-
-##### References
 
 ## Creating a convex hull
 
@@ -76,6 +47,9 @@ An excel file with all of the members of a community (the Olifants, the Breed, o
 
 ###### Packages required before running this:
 Alphahull
+
+###### average_fish
+Creates an "average" fish of the species.
 
 ###### normalize_coordinates
 normalize_coordinates now needs to be run across a community, rather than across a species.
