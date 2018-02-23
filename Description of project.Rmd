@@ -50,14 +50,11 @@ Alphahull
 Geomorph
 rgl, which requires a download of XQuartz on mac
 
-###### average_fish
-Creates an "average" fish of the species.
+###### species_average
+Creates an "average" fish of the species, which have already been analyzed using GPA in the function overall_average; this outputs an array of each average fish.
 
-###### normalize_coordinates
-normalize_coordinates now needs to be run across a community, rather than across a species.
-
-###### community_average
-Generate a consensus morphology that averages the position of each landmark across all species and plot them to create an average shape of all individuals
+###### overall_average
+Generate a consensus morphology that averages the position of each landmark across all species; this is done based off the 
 
 ###### relative_warp
 Compare the position of each landmark of a species to the same landmark of the community average. 
