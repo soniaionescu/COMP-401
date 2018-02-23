@@ -29,10 +29,10 @@ Morphometrics with R, by Julien Claude (2008).
 https://cran.r-project.org/web/packages/geomorph/geomorph.pdf
 
 
-## Creating a convex hull
+## Creating a morphospace
 
 ##### File Name:
-convex_hull.R
+create_morphospace.R
 
 ##### Purpose:
 Create a relative warp analysis/principle component analysis for a specific community.
@@ -47,6 +47,8 @@ An excel file with all of the members of a community (the Olifants, the Breed, o
 
 ###### Packages required before running this:
 Alphahull
+Geomorph
+rgl, which requires a download of XQuartz on mac
 
 ###### average_fish
 Creates an "average" fish of the species.
