@@ -4,4 +4,4 @@
 
 For my project, I will be working with Sunci Avlijas in the <a href = "http://redpath-staff.mcgill.ca/ricciardi/index.html">Ricciardi lab</a>.
 
-For a more detailed description of the parts of this project, you can read "Description of project.md"
+For a more detailed description of the parts of this project, you can read "Description of project.Rmd"
