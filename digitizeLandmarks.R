@@ -3,6 +3,7 @@
 ## before running this, you must have the packages "jpeg" installed and loaded.
 ## A more detailed description of what this does is in the R markdown file called Description of how to digitize landmarks.
 digitize_landmark <- function(filename){
+    require(dplyr)
     ## perform this function for each file within the csv
     fishPhotos <- read.csv(file=filename, stringsAsFactors = FALSE, header=FALSE)
     ## create a data frame with labels for each labeled thing; this order is from Jonathan's report. This should be the order the fish is clicked on, later.
