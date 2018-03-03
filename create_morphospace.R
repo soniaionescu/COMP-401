@@ -24,3 +24,19 @@ overall_average <- function(filename){
     }
     return(gpagen(ar, print.progress = FALSE))
 }
+
+relative_warp <- function(array){
+    array <- cbind(array,apply(array[,1:10],1,mean))
+    numberSpecies <- length(array[1,1,])
+    cartesianCoords <- data.frame(matrix(0, ncol = 39*3, nrow = numberSpecies))
+    
+    for(i in 1:numberSpecies){
+        counter <- 1
+        for(j in 1:39){ ## put x value
+            for(k in 1:2){ ## put y value
+                cartesianCoords[i, counter]<-array[j, k, i]
+                counter <- counter + 1
+            }
+        }
+    }
+}
