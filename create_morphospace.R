@@ -26,10 +26,21 @@ overall_average <- function(filename){
 }
 
 relative_warp <- function(array){
-    array <- cbind(array,apply(array[,1:10],1,mean))
+    require(ggfortify)
     numberSpecies <- length(array[1,1,])
-    cartesianCoords <- data.frame(matrix(0, ncol = 39*3, nrow = numberSpecies))
-    
+    name_coords <- character(78)
+    xs <- paste0(dimnames(myArray)[[1]], "x")
+    ys <- paste0(dimnames(myArray)[[1]], "y")
+    for(i in 1:78){
+        if(i %% 2 == 1){
+            name_coords[i] <- xs[ceiling(i/2)]
+        }
+        else{
+            name_coords[i] <- ys[ceiling(i/2)]
+        }
+    }
+    cartesianCoords <- (matrix(0, ncol = 39*2, nrow = numberSpecies, 
+                               dimnames = list(dimnames(array)[[3]], name_coords)))
     for(i in 1:numberSpecies){
         counter <- 1
         for(j in 1:39){ ## put x value
@@ -39,4 +50,9 @@ relative_warp <- function(array){
             }
         }
     }
+    
+    df <- data.frame(cartesianCoords, species = dimnames(array)[[3]])
+
+    autoplot(prcomp(cartesianCoords), data = df, colour = 'species')
+    return(prcomp(cartesianCoords))
 }
