@@ -78,6 +78,9 @@ A morphospace which has been analyzed for density, or which has had Voronoi poly
 ##### Functions:
 
 ###### Packages required before running this:
+kde2d
+ggplot2
+deldir
 
 ###### continuous_kerneldensity
 Apply 2D kernel density onto a morphospace to reflect the density of the space.
