@@ -1,4 +1,5 @@
 continuous_kernelDensity <- function(pca_object){
+    require(MASS)
     pca <- pca_object[[1]]
     xValues <-pca$x[, "PC1"]
     yValues <- pca$x[,"PC2"]
@@ -14,7 +15,6 @@ contour_kernelDensity <- function(pca_object){
     xValues <-pca$x[, "PC1"]
     yValues <- pca$x[,"PC2"]
     df <- data.frame(x=xValues,y=yValues,species=factor(pca_object[[2]]))
-    print(df)
     commonTheme = list(labs(color="Density",fill="Density",
                             x="PC1", y="PC2"),
                        ggtitle(label="Contour Kernel Density of Morphospace"),
@@ -37,6 +37,7 @@ contour_kernelDensity <- function(pca_object){
 
 
 mountain_graph <- function(pca_object){
+    require(MASS)
     pca <- pca_object[[1]]
     xValues <-pca$x[, "PC1"]
     yValues <- pca$x[,"PC2"]
@@ -58,4 +59,5 @@ Voronoi_polygon <- function(pca_object){
     numberSpecies <- nrow(pca$x)
     graphColors <- topo.colors(numberSpecies)
     plot(graphTiles, fillcol=graphColors, close=TRUE, ylab='PC2',xlab='PC1',main='Morphospace with Voronoi polygons')
+    return(graphV)
 }
