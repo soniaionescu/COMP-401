@@ -29,8 +29,8 @@ relative_warp <- function(array){
     require(ggfortify)
     numberSpecies <- length(array[1,1,])
     name_coords <- character(56)
-    xs <- paste0(dimnames(myArray)[[1]], "x")
-    ys <- paste0(dimnames(myArray)[[1]], "y")
+    xs <- paste0(dimnames(array)[[1]], "x")
+    ys <- paste0(dimnames(array)[[1]], "y")
     for(i in 1:56){
         if(i %% 2 == 1){
             name_coords[i] <- xs[ceiling(i/2)]
