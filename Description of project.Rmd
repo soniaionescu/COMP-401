@@ -60,6 +60,7 @@ Generate a consensus morphology that averages the position of each landmark acro
 Run Principal Component analysis comparing each species of the community, and plot PC1 and PC2.
 
 ##### References
+http://www.indiana.edu/~g562/Lectures/Lecture%204%20-%20Procrustes,%20PCA,%20and%20morphospace.pdf
 
 ## Morphospace analysis
 
