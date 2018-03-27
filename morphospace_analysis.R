@@ -4,7 +4,6 @@ continuous_kernelDensity <- function(pca_object){
     xValues <-pca$x[, "PC1"]
     yValues <- pca$x[,"PC2"]
     kernelDensity <- kde2d(xValues, yValues, n=100, lims = c(-0.30, 0.30, -0.25, 0.20))
-    image(kernelDensity,zlim=c(-0.1,20))
     filled.contour(kernelDensity, color.palette = 
                        colorRampPalette(c('white','blue','yellow','red','darkred'))) #gives colour and index
     title(main="Kernel density graph of morphospace", xlab="PC1", ylab="PC2")
