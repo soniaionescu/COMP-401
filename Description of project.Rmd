@@ -38,16 +38,16 @@ create_morphospace.R
 Create a relative warp analysis/principle component analysis for a specific community.
 
 ##### Input:
-An excel file with all of the members of a community (the Olifants, the Breed, or the Orange river). 
+An excel file with all of the members of a community. 
 
 ##### Output:
-
+A list containing a PCA object which has the (x, y) coordinates associated with the PCA graph, as well as a list of species.
 
 ##### Functions:
 
 ###### Packages required before running this:
 Alphahull
-Geomorph
+ggplot and ggfortify
 rgl, which requires a download of XQuartz on mac
 
 ###### species_average
@@ -57,10 +57,7 @@ Creates an "average" fish of the species, which have already been analyzed using
 Generate a consensus morphology that averages the position of each landmark across all species; this is done based off the 
 
 ###### relative_warp
-Compare the position of each landmark of a species to the same landmark of the community average. 
-
-###### kmeanscluster
-Group species based on k-means cluster analysis; this will group species within the morphospace with similar principle components together, allowing us to learn whether the invader is similar to the native species.
+Run Principal Component analysis comparing each species of the community, and plot PC1 and PC2.
 
 ##### References
 
@@ -73,19 +70,25 @@ morphospace_analysis.R
 To analyse the density of a morphospace.
 
 ##### Input:
-A morphospace
+A morphospace (the PCA object which is the output of relative_warp).
 
 ##### Output:
-A morphospace which has been analyzed for density, and which has had Voronoi polygons added.
+A morphospace which has been analyzed for density, or which has had Voronoi polygons added.
 
 ##### Functions:
 
 ###### Packages required before running this:
 
-###### 2Dkerneldensity
+###### continuous_kerneldensity
 Apply 2D kernel density onto a morphospace to reflect the density of the space.
 
-###### voronoiPolygon
+###### contour_kerneldensity
+Apply 2D kernel density onto a morphospace to reflect the density of the space.
+
+###### mountain_graph
+Show the kernel density in a 3D manner.
+
+###### Voronoi_polygon
 Add Voronoi polygons to the morphospace, to represent avaiable niche space for every species within the community.
 
 ##### References
