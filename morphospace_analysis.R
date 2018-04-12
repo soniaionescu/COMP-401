@@ -58,5 +58,26 @@ Voronoi_polygon <- function(pca_object){
     numberSpecies <- nrow(pca$x)
     graphColors <- topo.colors(numberSpecies)
     plot(graphTiles, fillcol=graphColors, close=TRUE, ylab='PC2',xlab='PC1',main='Morphospace with Voronoi polygons')
-    return(graphV)
+    temp <- graphV$summary
+    rownames(temp) <- pca_object[[2]]
+    return(temp)
+}
+linear_regression <- function(filename, voronoiPolygons, desiredSite){
+    require(dplyr)
+    voronoiPolygons$species <- rownames(voronoiPolygons)
+    fishAbundances <- read.csv(filename)
+    fishAbundancesSummed <- fishAbundances %>% dplyr::group_by(Site, Common.name) %>% dplyr::summarize(Abundance = sum(Abundance))
+    fishASbySite <- fishAbundancesSummed %>% dplyr::filter(Site %in% desiredSite)
+    numberSpecies <- length(voronoiPolygons$species)
+    fishASbySite <- fishASbySite %>% mutate(Common.name = tolower(as.character(Common.name)))
+    print(unique(fishAbundancesSummed$Common.name))
+    print(unique(voronoiPolygons$species))
+    for(spec in fishASbySite$Common.name){
+        voronoiPolygons[voronoiPolygons$species == spec, "abundances"] <- fishASbySite[fishASbySite$Common.name == spec, "Abundance"]
+    }
+    print(head(voronoiPolygons$abundances))
+    model <- lm(data = voronoiPolygons, del.area~abundances)
+    plot(data = voronoiPolygons, del.area~abundances)
+    abline(model)
+    summary(model)
 }
