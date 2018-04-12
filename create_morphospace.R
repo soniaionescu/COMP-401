@@ -24,7 +24,7 @@ overall_average <- function(filename){
     }
     return(gpagen(ar, print.progress = FALSE))
 }
-relative_warp <- function(array){
+do_PCA <- function(array){
     require(ggplot2)
     require(ggfortify)
     numberSpecies <- length(array[1,1,])
@@ -56,5 +56,11 @@ relative_warp <- function(array){
     print(autoplot(prcomp(cartesianCoords), scale = FALSE, data = df, colour = 'species', main = "Morphospace"))
     return(list(prcomp(cartesianCoords), df$species))
 }
-
-
+create_RelWarp <- function(array){
+    require(Morpho)
+    require(ggplot2)
+    rwScores <- relWarps(array)$bescores
+    rwsdf <- data.frame(rwScores)
+    rwsdf$species <- row.names(rwsdf)
+    ggplot(rwsdf, aes(X1, X2)) + geom_point(aes(color = species)) + ylab("PC2") + xlab("PC1") + ggtitle("Morphospace using relative warps")
+}
