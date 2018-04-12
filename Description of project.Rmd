@@ -56,8 +56,11 @@ Creates an "average" fish of the species, which have already been analyzed using
 ###### overall_average
 Generate a consensus morphology that averages the position of each landmark across all species; this is done based off the 
 
-###### relative_warp
+###### do_PCA
 Run Principal Component analysis comparing each species of the community, and plot PC1 and PC2.
+
+###### create_RelWarp
+Runs relative warp analysis on the species of each community.
 
 ##### References
 http://www.indiana.edu/~g562/Lectures/Lecture%204%20-%20Procrustes,%20PCA,%20and%20morphospace.pdf
@@ -95,11 +98,5 @@ Show the kernel density in a 3D manner.
 ###### Voronoi_polygon
 Add Voronoi polygons to the morphospace, to represent avaiable niche space for every species within the community.
 
-##### References
-
-# Creation of Shiny App
-
-## Receiving input 
-
-##### References:
-https://shiny.rstudio.com/articles/plot-interaction.html
+###### linear_regression
+Computes a linear regression of area of voronoi polygon vs abundance data for a specific site.
