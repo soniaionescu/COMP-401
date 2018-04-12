@@ -54,13 +54,16 @@ do_PCA <- function(array){
     df <- data.frame(cartesianCoords, species = dimnames(array)[[3]])
 
     print(autoplot(prcomp(cartesianCoords), scale = FALSE, data = df, colour = 'species', main = "Morphospace"))
-    return(list(prcomp(cartesianCoords), df$species))
+    return(list(prcomp(cartesianCoords)$x, df$species))
 }
-create_RelWarp <- function(array){
+ create_RelWarp <- function(array){
     require(Morpho)
     require(ggplot2)
     rwScores <- relWarps(array)$bescores
     rwsdf <- data.frame(rwScores)
     rwsdf$species <- row.names(rwsdf)
     ggplot(rwsdf, aes(X1, X2)) + geom_point(aes(color = species)) + ylab("PC2") + xlab("PC1") + ggtitle("Morphospace using relative warps")
+    names(rwsdf) <- c("PC1", "PC2", names(rwsdf)[3:length(rwsdf)])
+    return(list(rwsdf, rwsdf$species))
 }
+
